@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Check, Bean, Sparkles, AlertCircle } from 'lucide-react';
+import { Check, Bean, Sparkles, AlertCircle, ArrowRight } from 'lucide-react';
 
 export const Newsletter: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -12,7 +12,7 @@ export const Newsletter: React.FC = () => {
     e.preventDefault();
     setErrorMsg('');
 
-    // Basic Email Regex Validation
+    // Email regex validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!email.trim() || !emailRegex.test(email.trim())) {
       setErrorMsg('Please enter a valid email address.');
@@ -26,50 +26,60 @@ export const Newsletter: React.FC = () => {
       setTimeout(() => {
         setEmail('');
         setSubscribed(false);
-      }, 4000);
+      }, 4500);
     }, 600);
   };
 
   return (
-    <section className="py-20 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-16 sm:py-20 lg:py-24 relative overflow-hidden bg-cream-100 dark:bg-forest-950">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Luxury Rounded Container */}
-        <div className="relative rounded-[44px] bg-gradient-to-br from-forest-900 via-forest-800 to-coffee-950 p-8 sm:p-16 text-cream-100 shadow-2xl overflow-hidden border border-gold-500/30">
+        {/* Luxury Reduced Height Newsletter Card */}
+        <div className="relative rounded-[36px] sm:rounded-[44px] bg-gradient-to-br from-forest-900 via-forest-800 to-coffee-950 p-8 sm:p-12 lg:p-14 text-cream-100 shadow-2xl overflow-hidden border border-gold-500/30 flex flex-col justify-center items-center text-center">
           
-          {/* Floating Bean Decorations */}
-          <motion.div
-            animate={{ y: [-8, 8, -8], rotate: [0, 10, 0] }}
-            transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-            className="absolute top-6 left-8 text-gold-400/30 pointer-events-none"
-          >
-            <Bean className="w-12 h-12" />
-          </motion.div>
+          {/* Soft Radial Gold Gradient Behind Heading */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(212,175,55,0.18),transparent_65%)] pointer-events-none" />
 
+          {/* Subtle Corner Coffee Bean Illustrations */}
           <motion.div
-            animate={{ y: [8, -8, 8], rotate: [0, -12, 0] }}
+            animate={{ y: [-6, 6, -6], rotate: [0, 8, 0] }}
             transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
-            className="absolute bottom-6 right-10 text-gold-400/20 pointer-events-none"
+            className="absolute top-6 left-6 sm:top-8 sm:left-10 text-gold-400/25 pointer-events-none"
           >
-            <Sparkles className="w-10 h-10" />
+            <Bean className="w-8 h-8 sm:w-10 sm:h-10" />
           </motion.div>
 
-          <div className="relative z-10 max-w-2xl mx-auto text-center space-y-6">
-            <span className="font-script text-3xl sm:text-4xl text-gold-400 block">
+          <motion.div
+            animate={{ y: [6, -6, 6], rotate: [0, -10, 0] }}
+            transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+            className="absolute bottom-6 right-6 sm:bottom-8 sm:right-10 text-gold-400/20 pointer-events-none"
+          >
+            <Sparkles className="w-7 h-7 sm:w-9 sm:h-9" />
+          </motion.div>
+
+          {/* Card Content Container */}
+          <div className="relative z-10 max-w-xl mx-auto space-y-4 sm:space-y-5">
+            
+            {/* Handwritten Subtitle */}
+            <span className="font-script text-2xl sm:text-3xl text-gold-400 block tracking-wide">
               Join Our Coffee Club
             </span>
 
-            <h2 className="font-serif font-bold text-3xl sm:text-5xl tracking-tight text-white leading-tight">
-              Get Secret Tasting Invites & 15% Off Your First Order
+            {/* Main Heading (Max 3 lines, scalable font sizes) */}
+            <h2 className="font-serif font-bold text-2xl sm:text-4xl lg:text-5xl tracking-tight text-white leading-snug">
+              Get Secret Tasting Invites & <span className="text-gold-400 font-script font-normal italic font-serif">15% Off</span> Your First Order
             </h2>
 
-            <p className="text-cream-300 text-sm sm:text-base font-light leading-relaxed">
-              Subscribe to receive weekly artisanal brew tips, exclusive single-origin release dates, and private event passes.
+            {/* Description (Smaller, ~2 lines max) */}
+            <p className="text-cream-300/90 text-xs sm:text-sm font-light leading-relaxed max-w-lg mx-auto line-clamp-2">
+              Subscribe to receive weekly artisanal brew tips, single-origin release dates, and private event passes.
             </p>
 
-            {/* Email Form */}
-            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto pt-2">
-              <div className="relative flex-1">
+            {/* Premium Email Form */}
+            <form onSubmit={handleSubmit} className="w-full max-w-lg mx-auto pt-2 space-y-4 sm:space-y-0">
+              <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-3 w-full">
+                
+                {/* Email Input (Pill Shaped, 56px Height, High Contrast) */}
                 <input
                   type="email"
                   required
@@ -80,50 +90,55 @@ export const Newsletter: React.FC = () => {
                     if (errorMsg) setErrorMsg('');
                   }}
                   aria-label="Email address for newsletter"
-                  className="w-full pl-11 pr-4 py-4 rounded-full bg-cream-100/10 border border-gold-500/40 text-white placeholder-cream-400 focus:outline-none focus:ring-2 focus:ring-gold-400 text-sm backdrop-blur-md"
+                  className="w-full sm:flex-1 h-14 px-6 rounded-full bg-cream-100/10 border border-gold-500/40 text-white placeholder-cream-300/70 text-sm focus:outline-none focus:ring-2 focus:ring-gold-400 transition-all backdrop-blur-md font-normal"
                 />
-                <Mail className="absolute left-4 top-4.5 w-4 h-4 text-gold-400" />
+
+                {/* Subscribe Button (56px Height, Subtle Glow & Arrow Slide) */}
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="group relative w-full sm:w-auto h-14 px-8 rounded-full bg-gold-500 text-forest-950 font-bold text-xs sm:text-sm tracking-wider uppercase shadow-md hover:shadow-glow-gold hover:shadow-gold-500/30 hover:bg-gold-400 hover:-translate-y-0.5 transition-all duration-300 active:scale-95 shrink-0 flex items-center justify-center gap-2.5 disabled:opacity-50 min-h-[44px]"
+                >
+                  {isSubmitting ? (
+                    <span>Submitting...</span>
+                  ) : subscribed ? (
+                    <>
+                      <Check className="w-4 h-4 text-forest-950" />
+                      <span>Subscribed!</span>
+                    </>
+                  ) : (
+                    <>
+                      <span>SUBSCRIBE NOW</span>
+                      <ArrowRight className="w-4 h-4 text-forest-950 transition-transform group-hover:translate-x-1" />
+                    </>
+                  )}
+                </button>
               </div>
 
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="magnetic-btn px-8 py-4 rounded-full bg-gold-500 text-forest-950 font-bold text-sm shadow-glow-gold hover:bg-gold-400 transition-all duration-300 transform active:scale-95 shrink-0 disabled:opacity-50"
-              >
-                {isSubmitting ? (
-                  'Submitting...'
-                ) : subscribed ? (
-                  <span className="flex items-center justify-center gap-2">
-                    <Check className="w-4 h-4" /> Subscribed!
-                  </span>
-                ) : (
-                  'Subscribe Now'
-                )}
-              </button>
+              {/* Error Alert */}
+              {errorMsg && (
+                <motion.div
+                  initial={{ opacity: 0, y: 5 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-xs text-rose-300 font-medium flex items-center justify-center gap-1.5 pt-1"
+                >
+                  <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                  <span>{errorMsg}</span>
+                </motion.div>
+              )}
+
+              {/* Success Alert */}
+              {subscribed && (
+                <motion.div
+                  initial={{ opacity: 0, y: 5 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-xs text-gold-400 font-semibold pt-1"
+                >
+                  ✓ Welcome to the club! Your 15% discount code has been sent to your inbox.
+                </motion.div>
+              )}
             </form>
 
-            {/* Error Message Feedback */}
-            {errorMsg && (
-              <motion.p
-                initial={{ opacity: 0, y: 5 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="text-xs text-rose-400 font-semibold flex items-center justify-center gap-1.5 pt-1"
-              >
-                <AlertCircle className="w-3.5 h-3.5" />
-                <span>{errorMsg}</span>
-              </motion.p>
-            )}
-
-            {/* Success Message Feedback */}
-            {subscribed && (
-              <motion.p
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="text-xs text-gold-400 font-semibold pt-2"
-              >
-                ✓ Thank you for subscribing! Your 15% discount code has been sent to your inbox.
-              </motion.p>
-            )}
           </div>
 
         </div>
