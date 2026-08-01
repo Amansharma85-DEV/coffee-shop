@@ -137,7 +137,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenReservation }) =
               {/* Overlapping Coffee Glass Image extending outside card boundaries */}
               <div className="relative z-10 w-full h-full transform hover:scale-105 transition-transform duration-700">
                 <img
-                  src="/images/hero_coffee.jpg"
+                  src="images/hero_coffee.jpg"
                   alt="Artisanal Specialty Latte"
                   className="w-full h-full object-cover rounded-[36px_16px_40px_20px] shadow-2xl border-2 border-gold-500/40"
                 />

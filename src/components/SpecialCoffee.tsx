@@ -18,7 +18,7 @@ export const SpecialCoffee: React.FC<SpecialCoffeeProps> = ({ onAddToCart }) => 
     rating: 4.95,
     reviewsCount: 1840,
     description: 'A perfect blend of bold roasted Arabica flavors, smooth Irish whiskey essence, and hand-whipped sweet cream velvet foam.',
-    image: '/images/irish_coffee.jpg',
+    image: 'images/irish_coffee.jpg',
     badge: 'Special Reserve',
     isPopular: true,
     isOrganic: true,
@@ -47,7 +47,7 @@ export const SpecialCoffee: React.FC<SpecialCoffeeProps> = ({ onAddToCart }) => 
           >
             <div className="relative aspect-[4/3] rounded-[44px] overflow-hidden shadow-2xl border-2 border-gold-500/30 group">
               <img
-                src="/images/irish_coffee.jpg"
+                src="images/irish_coffee.jpg"
                 alt="Special Reserve Müil Irish Coffee"
                 className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
               />
@@ -170,7 +170,7 @@ export const SpecialCoffee: React.FC<SpecialCoffeeProps> = ({ onAddToCart }) => 
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 items-center">
                 <img
-                  src="/images/irish_coffee.jpg"
+                  src="images/irish_coffee.jpg"
                   alt="Special Reserve"
                   className="w-full h-64 object-cover rounded-2xl shadow-md"
                 />
