@@ -94,7 +94,6 @@ export const Newsletter: React.FC = () => {
                       setEmail(e.target.value);
                       if (errorMsg) setErrorMsg('');
                     }}
-                    onBlur={() => setTouched(true)}
                     aria-label="Email address for newsletter"
                     className={`w-full h-14 pl-12 pr-11 text-base text-white placeholder:text-cream-300/75 rounded-full bg-gradient-to-r from-cream-100/15 via-cream-100/10 to-cream-100/15 backdrop-blur-md shadow-[inset_0_2px_4px_rgba(0,0,0,0.25)] focus:outline-none transition-all duration-300 focus:-translate-y-0.5 ${
                       errorMsg
