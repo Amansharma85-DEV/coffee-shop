@@ -73,7 +73,7 @@ export const CoffeeMenu: React.FC<CoffeeMenuProps> = ({ onAddToCart }) => {
       {/* Background Decor */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-gold-400/10 rounded-full blur-[160px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         
         {/* Responsive Section Header */}
         <div className="text-left max-w-xl mb-6 sm:mb-8 space-y-2">
@@ -91,7 +91,7 @@ export const CoffeeMenu: React.FC<CoffeeMenuProps> = ({ onAddToCart }) => {
           </p>
         </div>
 
-        {/* STICKY CATEGORY NAVIGATION (No Scrollbar + Gradient Fades) */}
+        {/* STICKY CATEGORY NAVIGATION */}
         <div className="sticky top-20 z-30 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-3 bg-cream-100/90 dark:bg-forest-950/90 backdrop-blur-md border-y border-gold-500/15">
           <div className="relative max-w-7xl mx-auto flex items-center">
             
@@ -113,7 +113,7 @@ export const CoffeeMenu: React.FC<CoffeeMenuProps> = ({ onAddToCart }) => {
                       tabBtnRefs.current[category] = el;
                     }}
                     onClick={() => handleTabChange(category)}
-                    className={`relative px-5 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-300 shrink-0 ${
+                    className={`relative px-5 sm:px-6 py-2.5 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-300 shrink-0 ${
                       isActive
                         ? 'bg-forest-900 text-cream-100 dark:bg-gold-500 dark:text-forest-950 shadow-md scale-105'
                         : 'bg-cream-200/80 dark:bg-forest-900/40 text-coffee-900 dark:text-cream-200 hover:bg-cream-300 dark:hover:bg-forest-800'
@@ -127,7 +127,7 @@ export const CoffeeMenu: React.FC<CoffeeMenuProps> = ({ onAddToCart }) => {
           </div>
         </div>
 
-        {/* OPTION B: RESPONSIVE 2x2 GRID INFO BAR ON MOBILE (No Overflow) */}
+        {/* RESPONSIVE 2x2 GRID INFO BAR ON MOBILE */}
         <div className="mt-5 mb-8 py-3 border-b border-coffee-900/10 dark:border-cream-100/10">
           <div className="grid grid-cols-2 gap-2 sm:flex sm:items-center sm:justify-center sm:gap-6 text-xs font-semibold text-coffee-800 dark:text-cream-200">
             <div className="flex items-center gap-2 px-3 py-2 rounded-xl bg-gold-500/10 text-gold-600 dark:text-gold-400 justify-center">
@@ -149,8 +149,12 @@ export const CoffeeMenu: React.FC<CoffeeMenuProps> = ({ onAddToCart }) => {
           </div>
         </div>
 
-        {/* PRODUCT CARDS GRID: 1 FULL-WIDTH CARD PER ROW ON MOBILE (320px–480px) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 items-stretch w-full">
+        {/* DEDICATED RESPONSIVE PRODUCT GRID:
+            - Mobile (320px–767px): grid-cols-1 (100% full width, 1 card per row)
+            - Tablet (768px–1023px): md:grid-cols-2 (2 cards per row)
+            - Desktop (1024px+): lg:grid-cols-3 xl:grid-cols-4 (3–4 cards per row)
+        */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 sm:gap-6 items-stretch w-full">
           <AnimatePresence mode="wait">
             {isLoading
               ? // Skeleton Loader
@@ -178,8 +182,8 @@ export const CoffeeMenu: React.FC<CoffeeMenuProps> = ({ onAddToCart }) => {
                         isAccentCard ? 'ring-1 ring-gold-500/30' : ''
                       }`}
                     >
-                      {/* Edge-to-Edge 16:10 Aspect Ratio Image */}
-                      <div className="relative aspect-[16/10] w-full overflow-hidden bg-cream-300 dark:bg-forest-900">
+                      {/* Edge-to-Edge 16:10 Aspect Image (220-260px height on mobile) */}
+                      <div className="relative aspect-[16/10] h-[230px] sm:h-auto w-full overflow-hidden bg-cream-300 dark:bg-forest-900">
                         <img
                           src={item.image}
                           alt={item.name}
@@ -197,7 +201,7 @@ export const CoffeeMenu: React.FC<CoffeeMenuProps> = ({ onAddToCart }) => {
                         {/* Top-Right Wishlist Heart Button */}
                         <button
                           onClick={(e) => toggleLike(item.id, e)}
-                          className="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/40 backdrop-blur-md flex items-center justify-center text-white hover:scale-110 transition-transform shadow-md"
+                          className="absolute top-3 right-3 w-9 h-9 rounded-full bg-black/40 backdrop-blur-md flex items-center justify-center text-white hover:scale-110 transition-transform shadow-md"
                           aria-label="Wishlist Item"
                         >
                           <Heart
@@ -208,20 +212,20 @@ export const CoffeeMenu: React.FC<CoffeeMenuProps> = ({ onAddToCart }) => {
                         </button>
 
                         {/* Rating Chip */}
-                        <div className="absolute bottom-2.5 left-3 bg-black/60 backdrop-blur-md text-white px-2.5 py-0.5 rounded-full text-[11px] font-bold flex items-center gap-1">
+                        <div className="absolute bottom-2.5 left-3 bg-black/60 backdrop-blur-md text-white px-2.5 py-1 rounded-full text-[11px] font-bold flex items-center gap-1">
                           <Star className="w-3 h-3 text-gold-500 fill-gold-500" />
                           <span>{item.rating}</span>
                         </div>
                       </div>
 
                       {/* Card Content (Equal Heights & Padding) */}
-                      <div className="p-5 flex-1 flex flex-col justify-between space-y-3 text-left">
+                      <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between space-y-3 text-left">
                         <div className="space-y-1.5">
                           <span className="text-[10px] font-bold uppercase tracking-widest text-gold-600 dark:text-gold-400">
                             {item.category}
                           </span>
 
-                          <h3 className="font-serif font-bold text-xl sm:text-2xl text-forest-950 dark:text-cream-100 group-hover:text-gold-600 dark:group-hover:text-gold-400 transition-colors leading-snug">
+                          <h3 className="font-serif font-bold text-xl sm:text-2xl text-forest-950 dark:text-cream-100 group-hover:text-gold-600 dark:group-hover:text-gold-400 transition-colors leading-snug line-clamp-2">
                             {item.name}
                           </h3>
 
@@ -230,7 +234,7 @@ export const CoffeeMenu: React.FC<CoffeeMenuProps> = ({ onAddToCart }) => {
                           </p>
                         </div>
 
-                        {/* Bottom Row: Price & Add to Cart Button */}
+                        {/* Bottom Row: Price & Add to Cart Button (Min 48px Height) */}
                         <div className="flex items-center justify-between pt-4 border-t border-black/5 dark:border-white/10">
                           <div>
                             <span className="text-[10px] text-coffee-500 dark:text-cream-400 block uppercase font-light tracking-wider">
@@ -243,7 +247,7 @@ export const CoffeeMenu: React.FC<CoffeeMenuProps> = ({ onAddToCart }) => {
 
                           <button
                             onClick={() => handleAdd(item)}
-                            className={`ripple-btn min-h-[44px] px-5 py-2.5 rounded-full font-bold text-xs sm:text-sm transition-all duration-300 shadow-md flex items-center gap-2 ${
+                            className={`ripple-btn min-h-[48px] h-12 px-6 rounded-full font-bold text-xs sm:text-sm transition-all duration-300 shadow-md flex items-center gap-2 shrink-0 ${
                               isAdded
                                 ? 'bg-emerald-600 text-white scale-105'
                                 : 'bg-forest-900 text-cream-100 dark:bg-gold-500 dark:text-forest-950 hover:bg-forest-800 dark:hover:bg-gold-400'
@@ -274,7 +278,7 @@ export const CoffeeMenu: React.FC<CoffeeMenuProps> = ({ onAddToCart }) => {
         <div className="text-center mt-14 sm:mt-16">
           <button
             onClick={() => handleTabChange('All')}
-            className="magnetic-btn inline-flex items-center gap-3 px-8 sm:px-9 py-4 rounded-full bg-forest-900 text-cream-100 dark:bg-gold-500 dark:text-forest-950 font-bold text-xs sm:text-sm tracking-wider uppercase shadow-luxury hover:shadow-luxury-hover transition-all min-h-[44px]"
+            className="magnetic-btn inline-flex items-center gap-3 px-8 sm:px-9 py-4 rounded-full bg-forest-900 text-cream-100 dark:bg-gold-500 dark:text-forest-950 font-bold text-xs sm:text-sm tracking-wider uppercase shadow-luxury hover:shadow-luxury-hover transition-all min-h-[48px] h-12"
           >
             <span>Explore All 48 Menu Items</span>
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
