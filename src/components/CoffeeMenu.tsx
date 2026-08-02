@@ -68,7 +68,7 @@ export const CoffeeMenu: React.FC<CoffeeMenuProps> = ({ onAddToCart }) => {
   ];
 
   return (
-    <section id="menu" className="pt-12 pb-28 sm:py-20 lg:py-28 relative overflow-hidden bg-[#FDFBF7] dark:bg-[#0A1713]">
+    <section id="menu" className="pt-28 pb-32 sm:py-20 lg:py-28 relative overflow-hidden bg-[#FDFBF7] dark:bg-[#0A1713]">
       
       {/* Background Decor */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-gold-400/10 rounded-full blur-[160px] pointer-events-none" />
@@ -91,8 +91,8 @@ export const CoffeeMenu: React.FC<CoffeeMenuProps> = ({ onAddToCart }) => {
           </p>
         </div>
 
-        {/* STICKY CATEGORY NAVIGATION (No Scrollbar + Subtle Mask Overlays) */}
-        <div className="sticky top-20 z-30 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-3 bg-[#FDFBF7]/90 dark:bg-[#0A1713]/90 backdrop-blur-md border-y border-gold-500/15">
+        {/* STICKY CATEGORY NAVIGATION (Top-20 offset to clear sticky top header) */}
+        <div className="sticky top-[72px] sm:top-20 z-30 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-3 bg-[#FDFBF7]/90 dark:bg-[#0A1713]/90 backdrop-blur-md border-y border-gold-500/15">
           <div className="relative max-w-7xl mx-auto flex items-center">
             
             {/* Left & Right Gradient Mask Overlays */}
