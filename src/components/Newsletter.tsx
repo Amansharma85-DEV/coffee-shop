@@ -40,7 +40,7 @@ export const Newsletter: React.FC = () => {
           {/* Soft Radial Gold Gradient Behind Heading */}
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(212,175,55,0.18),transparent_65%)] pointer-events-none" />
 
-          {/* Subtle Corner Coffee Bean Illustrations */}
+          {/* Corner Coffee Bean & Sparkle Illustrations */}
           <motion.div
             animate={{ y: [-6, 6, -6], rotate: [0, 8, 0] }}
             transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
@@ -60,17 +60,17 @@ export const Newsletter: React.FC = () => {
           {/* Card Content Container */}
           <div className="relative z-10 max-w-xl mx-auto space-y-5">
             
-            {/* Handwritten Subtitle */}
+            {/* Subtitle */}
             <span className="font-script text-2xl sm:text-3xl text-gold-400 block tracking-wide">
               Join Our Coffee Club
             </span>
 
-            {/* Main Heading (Max 3 lines) */}
+            {/* Main Heading */}
             <h2 className="font-serif font-bold text-2xl sm:text-4xl lg:text-5xl tracking-tight text-white leading-snug">
               Get Secret Tasting Invites & <span className="text-gold-400 font-script font-normal italic font-serif">15% Off</span> Your First Order
             </h2>
 
-            {/* Description (Smaller, ~2 lines max) */}
+            {/* Description */}
             <p className="text-cream-300/90 text-xs sm:text-sm font-light leading-relaxed max-w-lg mx-auto line-clamp-2">
               Subscribe to receive weekly artisanal brew tips, single-origin release dates, and private event passes.
             </p>
@@ -78,12 +78,13 @@ export const Newsletter: React.FC = () => {
             {/* Premium Email Form with 56px Matched Heights */}
             <form onSubmit={handleSubmit} className="w-full max-w-lg mx-auto pt-2 space-y-3">
               
-              {/* Responsive Container: Stacks vertically ONLY below 400px */}
-              <div className="flex flex-col min-[400px]:flex-row items-center gap-4 w-full">
+              {/* Responsive Container: Equal Widths & 16-20px Spacing */}
+              <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-5 w-full">
                 
-                {/* Email Input Container with Inside Left Icon & Right Checkmark */}
-                <div className="relative w-full min-[400px]:flex-1">
-                  <Mail className="absolute left-4.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gold-400/80 pointer-events-none z-10" />
+                {/* Email Input Container with Inside Left Mail Icon & Right Checkmark */}
+                <div className="relative w-full sm:flex-1">
+                  {/* Inside Left Icon (20px left padding, vertically centered) */}
+                  <Mail className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-gold-400 pointer-events-none z-10" />
 
                   <input
                     type="email"
@@ -95,7 +96,7 @@ export const Newsletter: React.FC = () => {
                       if (errorMsg) setErrorMsg('');
                     }}
                     aria-label="Email address for newsletter"
-                    className={`w-full h-14 pl-12 pr-11 text-base text-white placeholder:text-cream-300/75 rounded-full bg-gradient-to-r from-cream-100/15 via-cream-100/10 to-cream-100/15 backdrop-blur-md shadow-[inset_0_2px_4px_rgba(0,0,0,0.25)] focus:outline-none transition-all duration-300 focus:-translate-y-0.5 ${
+                    className={`w-full h-14 min-h-[56px] pl-14 pr-12 text-base text-white placeholder:text-cream-200/90 placeholder:font-normal placeholder:text-[15px] sm:placeholder:text-[16px] rounded-full bg-gradient-to-r from-cream-100/15 via-cream-100/10 to-cream-100/15 backdrop-blur-md shadow-md focus:outline-none transition-all duration-250 ease-out focus:-translate-y-0.5 [&:-webkit-autofill]:bg-forest-900 ${
                       errorMsg
                         ? 'border-2 border-rose-500/80 focus:ring-2 focus:ring-rose-400'
                         : 'border border-gold-500/40 focus:border-gold-400 focus:ring-2 focus:ring-gold-400/40 focus:shadow-glow-gold'
@@ -107,18 +108,18 @@ export const Newsletter: React.FC = () => {
                     <motion.div
                       initial={{ opacity: 0, scale: 0.8 }}
                       animate={{ opacity: 1, scale: 1 }}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none z-10"
+                      className="absolute right-4.5 top-1/2 -translate-y-1/2 pointer-events-none z-10"
                     >
-                      <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                      <CheckCircle2 className="w-4.5 h-4.5 text-emerald-400" />
                     </motion.div>
                   )}
                 </div>
 
-                {/* Subscribe Button (Exact 56px Height, Matching Pill Geometry & Glow) */}
+                {/* Subscribe Button (Exact 56px Height & Matched Width on Mobile) */}
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="group relative w-full min-[400px]:w-auto h-14 px-8 rounded-full bg-gold-500 text-forest-950 font-bold text-xs sm:text-sm tracking-wider uppercase shadow-md hover:shadow-glow-gold hover:shadow-gold-500/30 hover:bg-gold-400 hover:-translate-y-0.5 transition-all duration-300 active:scale-95 shrink-0 flex items-center justify-center gap-2.5 disabled:opacity-50 min-h-[44px]"
+                  className="group relative w-full sm:w-auto h-14 min-h-[56px] px-8 rounded-full bg-gold-500 text-forest-950 font-bold text-xs sm:text-sm tracking-wider uppercase shadow-md hover:shadow-glow-gold hover:shadow-gold-500/30 hover:bg-gold-400 hover:-translate-y-0.5 transition-all duration-300 active:scale-95 shrink-0 flex items-center justify-center gap-2.5 disabled:opacity-50"
                 >
                   {isSubmitting ? (
                     <span>Submitting...</span>
